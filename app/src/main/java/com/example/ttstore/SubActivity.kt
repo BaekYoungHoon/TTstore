@@ -7,24 +7,26 @@ import com.example.ttstore.databinding.AddActivityBinding
 
 
 class SubActivity : AppCompatActivity() {
-    lateinit var bind: AddActivityBinding
-    lateinit var bindingg: ActivityMainBinding
+    lateinit var SubBind: AddActivityBinding
+    lateinit var MainBind: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_activity)
 
-        bind = AddActivityBinding.inflate(layoutInflater)
-        bindingg = ActivityMainBinding.inflate(layoutInflater)
+        SubBind = AddActivityBinding.inflate(layoutInflater)
+        MainBind = ActivityMainBinding.inflate(layoutInflater)
 
-        setContentView(bind.root)
+        setContentView(SubBind.root)
         //var title1: String = binding.title.toString()
         //var detail: String = binding.title.toString()
-        bind.add.setOnClickListener{
-            bindingg.Title.text = bind.Title.toString()
+        SubBind.add.setOnClickListener{
+            var title = SubBind.Title.toString()
+            MainBind.ID.setText(title)
+            MainBind.Title.setText(SubBind.Title.toString())
             finish()
         }
-        bind.button2.setOnClickListener {
+        SubBind.button2.setOnClickListener {
             finish()
         }
 
